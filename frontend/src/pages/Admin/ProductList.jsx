@@ -25,6 +25,36 @@ const ProductList = () => {
     const [createProduct] = useCreateProductMutation()
     const { data: categories } = useFetchCategoriesQuery()
 
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        try {
+            const productData = new FormData()
+            productData.append('image', image)
+            productData.append('name', name)
+            productData.append('description', description)
+            productData.append('price', price)
+            productData.append('category', category)
+            productData.append('quantity', quantity)
+            productData.append('brand', brand)
+            productData.append('countInStock', stock)
+
+            const {data} = await createProduct(productData)
+
+            if(data.error) {
+                toast.error("Product creation failed")
+            } else{
+                toast.success(`${data.name} is created`)
+                navigate('/')
+            }
+            
+        } catch (error) {
+            console.error(error)
+            toast.error("Product creation failed")
+        }
+    }
+
     const uploadFileHandler = async (e) => {
         const formData = new FormData()
         formData.append('image', e.target.files[0])
@@ -39,10 +69,6 @@ const ProductList = () => {
             toast.error(error?.data?.message || error.error)
         }
     }
-
-    // const handleSubmit = async () => {
-
-    // }
 
 
     return (
@@ -122,7 +148,7 @@ const ProductList = () => {
                             </div>
                         </div>
                         
-                        <button className='py-4 px-10 mt-5 rounded-lg text-lg font-bold bg-pink-600'>Submit</button>
+                        <button onClick={handleSubmit} className='py-4 px-10 mt-5 rounded-lg text-lg font-bold bg-pink-600'>Submit</button>
                     </div>
                 </div>
             </div>
