@@ -39,7 +39,7 @@ const ProductList = () => {
             productData.append('category', category)
             productData.append('quantity', quantity)
             productData.append('brand', brand)
-            productData.append('countInStock', stock)
+            productData.append('constInStock', stock)
 
             const {data} = await createProduct(productData)
 

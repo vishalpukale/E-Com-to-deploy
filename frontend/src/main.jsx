@@ -24,6 +24,7 @@ import ProductUpdate from './pages/Admin/ProductUpdate.jsx'
 
 // User routes
 import Profile from './pages/User/Profile.jsx'
+import AllProducts from './pages/Admin/AllProducts.jsx'
 
 
 const router = createBrowserRouter(
@@ -43,7 +44,9 @@ const router = createBrowserRouter(
         <Route path='userlist' element={<UserList />} />
         <Route path='categorylist' element={<CategoryList />} />
         <Route path='productlist' element={<ProductList />} />
-        <Route path='product/update/:id' element={<ProductUpdate />} />
+        <Route path='allproductslist' element={ <AllProducts /> } />
+        <Route path='productlist/:pageNumber' element={<ProductList />} />
+        <Route path='product/update/:_id' element={<ProductUpdate />} />
       </Route>
 
     </Route>
