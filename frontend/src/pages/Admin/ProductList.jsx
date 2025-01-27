@@ -78,7 +78,7 @@ const ProductList = () => {
                 <AdminMenu /> 
 
                 <div className='md:w-3/4 p-3'>
-                    <div className='h-12'>Create Product</div>
+                    <div className='h-12 text-2xl mb-5 mt-11'>Create Product</div>
 
                     {imageUrl && (
                         <div className="text-center">
