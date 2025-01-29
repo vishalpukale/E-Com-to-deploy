@@ -26,6 +26,9 @@ import ProductUpdate from './pages/Admin/ProductUpdate.jsx'
 import Profile from './pages/User/Profile.jsx'
 import AllProducts from './pages/Admin/AllProducts.jsx'
 
+//home
+import Home from './Home.jsx'
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,6 +36,7 @@ const router = createBrowserRouter(
 
       <Route path='/login' element={ <Login/> } />
       <Route path='/register' element={ <Register/> } />
+      <Route path='/' index={true} element={ <Home /> } />
 
       {/* if logged in then only show it otherwise dont */}
       <Route path='' element={<PrivateRoute />}>

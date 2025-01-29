@@ -32,7 +32,7 @@ const AllProducts = () => {
                         {products.map((product) => (
                             <Link key={product._id} to={`/admin/product/update/${product._id}`} className='block mb-4 overflow-hidden border border-gray-700 rounded-lg p-2'>
                                 <div className="flex">
-                                    <img src={product.image} alt={product.name} className='w-[10rem] object-cover' />
+                                    <img src={product.image} alt={product.name} className='w-[12rem] object-cover' />
 
                                     {/* product details */}
                                     <div className="p-4 flex flex-col justify-around">
