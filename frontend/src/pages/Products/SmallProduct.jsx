@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import HeartIcon from './HeartIcon'
 
 const SmallProduct = ({product}) => {
   return (
@@ -7,7 +8,7 @@ const SmallProduct = ({product}) => {
         <div className="relative">
             <img src={product.image} alt={product.name} className='h-auto rounded' />
 
-            {/* <HeartIcon product={product} /> */}
+            <HeartIcon product={product} />
 
             <div className="p-4">
                 <Link to={`/product/${product._id}`}>

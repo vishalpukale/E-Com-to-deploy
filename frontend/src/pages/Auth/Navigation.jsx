@@ -7,6 +7,7 @@ import './Navigation.css'
 import { useLogoutMutation } from '../../redux/api/usersApiSlice'
 import { logout } from '../../redux/features/Auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import FavoritesCount from '../Products/FavoritesCount';
 
 const Navigation = () => {
 
@@ -67,6 +68,7 @@ const Navigation = () => {
         <Link to='/favourite' className='flex items-center translate-transform transform hover:translate-x-3' style={{ transition: '0.3s ease-in-out' }}>
           <FaRegHeart size={24.5} className='mr-2 mt-[3rem]' />
           <span className="hidden nav-item-name mt-[3rem]">Favorite</span> {" "}
+          <FavoritesCount />
         </Link>
       </div>
 
