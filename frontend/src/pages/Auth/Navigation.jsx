@@ -65,7 +65,7 @@ const Navigation = () => {
         </Link>
 
         {/* favourite items */}
-        <Link to='/favourite' className='flex items-center translate-transform transform hover:translate-x-3' style={{ transition: '0.3s ease-in-out' }}>
+        <Link to='/favorite' className='flex items-center translate-transform transform hover:translate-x-3' style={{ transition: '0.3s ease-in-out' }}>
           <FaRegHeart size={24.5} className='mr-2 mt-[3rem]' />
           <span className="hidden nav-item-name mt-[3rem]">Favorite</span> {" "}
           <FavoritesCount />

@@ -28,6 +28,8 @@ import AllProducts from './pages/Admin/AllProducts.jsx'
 
 //home
 import Home from './Home.jsx'
+import Favorites from './pages/Products/Favorites.jsx'
+import ProductDetails from './pages/Products/ProductDetails.jsx'
 
 
 const router = createBrowserRouter(
@@ -37,11 +39,14 @@ const router = createBrowserRouter(
       <Route path='/login' element={ <Login/> } />
       <Route path='/register' element={ <Register/> } />
       <Route path='/' index={true} element={ <Home /> } />
+      
+      <Route path='/favorite' element={ <Favorites /> } />
+      <Route path='/product/:id' element={ <ProductDetails /> } />
 
       {/* if logged in then only show it otherwise dont */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<Profile />} />
-      </Route>
+      </Route> 
 
       {/* admin only routes */}
       <Route path='/admin' element={<AdminRoutes />}>
