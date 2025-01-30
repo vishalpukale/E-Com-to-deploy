@@ -8,6 +8,8 @@ import { Link, useNavigate, useParams } from 'react-router'
 import { useSelector } from 'react-redux'
 import { FaArrowAltCircleLeft, FaBox, FaCartArrowDown, FaClock, FaShoppingCart, FaStar, FaStore } from 'react-icons/fa'
 import Ratings from './Ratings'
+import ProductTabs from './ProductTabs'
+import { toast } from 'react-toastify'
 
 
 const ProductDetails = () => {
@@ -23,6 +25,23 @@ const ProductDetails = () => {
     const { userInfo } = useSelector(state => state.auth)
 
     const [createReview, { isLoading: lodingProductReview }] = useCreateReviewMutation()
+
+    const submitHandler = async (e) => {
+        e.preventDefault()
+
+        try{
+            await createReview({
+                productId,
+                rating,
+                comment
+            }).unwrap()
+            refetch()
+            toast.success("Review created successfully")
+             
+        } catch(err) {
+            toast.error(err?.data || err.message)
+        }
+    }
 
     return (
         <>
@@ -100,7 +119,17 @@ const ProductDetails = () => {
                         </div>
 
                         <div className='mt-[5rem] container flex flex-wrap items-center justify-between ml-[10rem]'>
-
+                                {/* productTabls */}
+                                <ProductTabs 
+                                    lodingProductReview={lodingProductReview} 
+                                    userInfo={userInfo}
+                                    submitHandler={submitHandler}
+                                    rating={rating}
+                                    setRating={setRating}
+                                    comment={comment}
+                                    setComment={setComment}
+                                    product={product} 
+                                />
                         </div>
 
                     </div>
