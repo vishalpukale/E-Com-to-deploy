@@ -5,16 +5,18 @@ import Message from '../../components/Message'
 import moment from 'moment'
 import HeartIcon from './HeartIcon'
 import { Link, useNavigate, useParams } from 'react-router'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { FaArrowAltCircleLeft, FaBox, FaCartArrowDown, FaClock, FaShoppingCart, FaStar, FaStore } from 'react-icons/fa'
 import Ratings from './Ratings'
 import ProductTabs from './ProductTabs'
 import { toast } from 'react-toastify'
+import { addToCart } from '../../redux/features/cart/cartSlice'
 
 
 const ProductDetails = () => {
     const { id: productId } = useParams()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [qty, setQty] = useState()
     const [rating, setRating] = useState()
@@ -42,6 +44,12 @@ const ProductDetails = () => {
             toast.error(err?.data || err.message)
         }
     }
+
+    const addToCartHandler = () => {
+        dispatch(addToCart({...product, qty}))
+        navigate('/cart')
+    }
+
 
     return (
         <>
@@ -110,7 +118,7 @@ const ProductDetails = () => {
 
                             <div className="btn-container">
                                 <button 
-                                // onClick={addToCartHandler} 
+                                onClick={addToCartHandler} 
                                 disable={product.constInStock===0} className='bg-pink-600 text-white px-5 py-2 mt-4 rounded-lg md:mt-0 flex items-center '>
                                     <FaCartArrowDown className='mr-2' />
                                     Add to Cart
