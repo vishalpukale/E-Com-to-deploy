@@ -4,7 +4,7 @@ import { addToCart, removeFromCart } from '../redux/features/cart/cartSlice'
 import { Link, useNavigate } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 
-const cart = () => {
+const Cart = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -12,8 +12,8 @@ const cart = () => {
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
 
-  const addToCartHandler = (product, qty) => {
-    dispatch(addToCart({...product, qty}))
+  const addToCartHandler = (product, quantity) => {
+    dispatch(addToCart({...product, quantity}))
   }
 
   const removeFromCartHandler = (id) => {
@@ -50,7 +50,7 @@ const cart = () => {
                   </div>
 
                   <div className='w-24'>
-                    <select className='w-full p-1 border rounded bg-inherit' value={item.qty} 
+                    <select className='w-full p-1 border rounded bg-inherit' value={item.quantity} 
                     onChange={e=> addToCartHandler(item, Number(e.target.value))}>
                       {[...Array(item.constInStock).keys()].map((x)=>(
                         <option key={x+1} value={x+1}>
@@ -73,11 +73,11 @@ const cart = () => {
               <div className="mt-8 w-[40rem]">
                 <div className='p-4 rounded-lg'>
                   <h2 className='text-xl font-semibold mb-2'>
-                    Items ({cartItems.reduce((acc, item) => acc + Number(item.qty || item.quantity || 1), 0)})
+                    Items ({cartItems.reduce((acc, item) => acc + Number(item.quantity || 1), 0)})
                   </h2>
 
                   <div className="text-2xl font-bold">
-                  Rs {cartItems.reduce((acc, item) => acc + Number(item.qty || item.quantity || 1) * Number(item.price || 0), 0).toFixed(2)}
+                  Rs {cartItems.reduce((acc, item) => acc + Number(item.quantity || 1) * Number(item.price || 0), 0).toFixed(2)}
                   </div>
 
                   <button 
@@ -96,4 +96,4 @@ const cart = () => {
   )
 }
 
-export default cart
+export default Cart

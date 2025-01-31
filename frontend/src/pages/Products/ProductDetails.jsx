@@ -18,7 +18,7 @@ const ProductDetails = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const [qty, setQty] = useState()
+    const [quantity, setQuantity] = useState()
     const [rating, setRating] = useState()
     const [comment, setComment] = useState()
 
@@ -46,7 +46,7 @@ const ProductDetails = () => {
     }
 
     const addToCartHandler = () => {
-        dispatch(addToCart({...product, qty}))
+        dispatch(addToCart({...product, quantity}))
         navigate('/cart')
     }
 
@@ -105,7 +105,7 @@ const ProductDetails = () => {
 
                                 {product.constInStock > 0 && (
                                     <div>
-                                        <select value={qty} onChange={e=>setQty(e.target.value)} className='pl-3 bg-inherit w-[6rem] rounded-lg text-white'>
+                                        <select value={quantity} onChange={e=>setQuantity(e.target.value)} className='pl-3 bg-inherit w-[6rem] rounded-lg text-white'>
                                             {[...Array(product.constInStock).keys()].map((x)=> (
                                                 <option key={x+1} value={x+1}>
                                                     {x+1}
