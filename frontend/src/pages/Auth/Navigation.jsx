@@ -63,10 +63,10 @@ const Navigation = () => {
         <Link to='/cart' className='flex items-center translate-transform transform hover:translate-x-3' style={{ transition: '0.3s ease-in-out' }}>
           <AiOutlineShoppingCart size={26} className='mr-2 mt-[3rem]' />
           <span className="hidden nav-item-name mt-[3rem]">CART</span> {" "}
-          <div className="absolute top-9">
+          <div className="absolute top-9 left-3">
             {cartItems.length > 0 && (
               <span>
-                <span className='px-1 py-0 text-sm text-white bg-pink-500'>
+                <span className='px-1 py-0 text-sm text-white bg-pink-500 rounded-full'>
                   {cartItems.reduce((a, c)=>Number(a) + Number(c.quantity), 0)}
                 </span>
               </span>

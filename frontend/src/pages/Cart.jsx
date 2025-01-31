@@ -18,6 +18,7 @@ const Cart = () => {
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
+    console.log(cartItems.totalPrice)
   }
 
   const checkoutHandler = () => {
@@ -75,7 +76,6 @@ const Cart = () => {
                   <h2 className='text-xl font-semibold mb-2'>
                     Items ({cartItems.reduce((acc, item) => acc + Number(item.quantity || 1), 0)})
                   </h2>
-
                   <div className="text-2xl font-bold">
                   Rs {cartItems.reduce((acc, item) => acc + Number(item.quantity || 1) * Number(item.price || 0), 0).toFixed(2)}
                   </div>
