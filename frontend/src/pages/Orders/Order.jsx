@@ -70,6 +70,11 @@ const Order = () => {
         toast.error(err.message)
     }
 
+    const deliverHandler = async() => {
+        await deliverOrder(orderId)
+        refetch()
+    }
+
 
 
     return isLoading ? (<Loader />) : error ? (<Message variant='danger'>{error.data.message}</Message>) : (
@@ -177,6 +182,13 @@ const Order = () => {
                             </div>
                         )}
                     </div>          
+                )}
+
+                {loadingDeliver && <Loader />}
+                {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                    <div>
+                        <button type='button' className='bg-pink-500 text-white w-full py-2' onClick={deliverHandler}>Mark as Delivered</button>
+                    </div>
                 )}
             </div>
         </div>
